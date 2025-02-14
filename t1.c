@@ -2,8 +2,8 @@ void main() {
   int i;
 
   ANSELG = 0x0000;  // PORTG'yi dijital olarak ayarla
-  TRISG = 0x0000;   // PORTG'yi çikis olarak ayarla
-  LATG = 0x0000;    // Baslangiçta tüm LED'leri kapat
+  TRISG = 0x0000;   // PORTG'yi Ã§ikis olarak ayarla
+  LATG = 0x0000;    // BaslangiÃ§ta tÃ¼m LED'leri kapat
 
   while(1) {
     // LED'leri sirayla yak
@@ -12,14 +12,21 @@ void main() {
       Delay_ms(50);  // 500ms bekle
     }
 
-    Delay_ms(500);  // 2 saniye bekle (Tüm LED'ler yanik)
+    Delay_ms(500);  // 2 saniye bekle (TÃ¼m LED'ler yanik)
 
-    // LED'leri sirayla söndür
+    // LED'leri sirayla sÃ¶ndÃ¼r
     for(i = 0; i < 16; i++) {
-      LATG = LATG & ~(1 << i); // i. biti 0 yap (LED'i söndür)
+      LATG = LATG & ~(1 << i); // i. biti 0 yap (LED'i sÃ¶ndÃ¼r)
       Delay_ms(50);  // 500ms bekle
     }
+    //terstern sÃ¶ndÃ¼rmek iÃ§in:
+    /*
+    for(i = 15; i >= 0; i--) {
+        LATG = LATG & ~(1 << i); // i. biti 0 yap (LED'i sÃ¶ndÃ¼r)
+         Delay_ms(50);
+          }
 
-    Delay_ms(500);  // 2 saniye bekle (Tüm LED'ler kapali)
+      */
+    Delay_ms(500);  // 2 saniye bekle (TÃ¼m LED'ler kapali)
   }
 }
